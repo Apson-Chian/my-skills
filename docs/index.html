@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Glass Works — 两个 skill，一点通透的灵感</title>
+  <meta name="description" content="Apson-Chian 的玻璃材质交互示例。体验 glass-ui 的通透界面与 liquid-glass-controls 的光学折射、柔软按压和拖动导航。">
+  <meta name="theme-color" content="#f5f6f3">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="site.css"><script src="site.js" defer></script>
+</head>
+<body>
+  <header class="header wrap"><a href="./" class="brand"><span class="brand-icon" aria-hidden="true">◒</span> Glass Works<span class="tag">SKILL SHOWCASE</span></a><a class="github" href="https://github.com/Apson-Chian/my-skills" target="_blank" rel="noopener noreferrer">GitHub <span>↗</span></a></header>
+  <main class="wrap">
+    <section class="hero"><div><div class="eyebrow"><span></span> AN OPEN EXPLORATION OF GLASS & LIGHT</div><h1>让界面，<br class="mobile-break">透一点光<span>。</span></h1><p>两套可复用的 skill，把通透的材质和柔软的交互，带进你的下一个作品。</p></div><div class="hero-note"><span>DESIGNED TO BE FELT.</span><p>看见背景。触碰光线。<br>从一个示例，开始你的设计。</p></div></section>
+    <section class="showcase" id="showcase" aria-label="Skill 交互示例">
+      <div class="demo-toolbar"><div class="tabs" role="tablist" aria-label="选择示例"><button id="tab-glass-ui" role="tab" aria-selected="true" aria-controls="panel-glass-ui" tabindex="0" data-demo="glass-ui"><span>01</span><strong>界面材质</strong><small>glass-ui</small></button><button id="tab-controls" role="tab" aria-selected="false" aria-controls="panel-controls" tabindex="-1" data-demo="controls"><span>02</span><strong>液态控件</strong><small>liquid-glass-controls</small></button></div><a class="open-demo" id="open-demo" href="glass-ui/" target="_blank" rel="noopener noreferrer">独立打开 <span>↗</span></a></div>
+      <div id="panel-glass-ui" role="tabpanel" aria-labelledby="tab-glass-ui"><iframe src="glass-ui/" title="glass-ui 可交互旅行仪表盘" id="frame-glass-ui"></iframe></div>
+      <div id="panel-controls" role="tabpanel" aria-labelledby="tab-controls" hidden><iframe data-src="controls/" title="liquid-glass-controls 交互实验室" id="frame-controls"></iframe></div>
+      <div class="demo-caption"><span><i></i> LIVE DEMO · 可以直接操作</span><a id="demo-source" href="https://github.com/Apson-Chian/my-skills/tree/main/glass-ui" target="_blank" rel="noopener noreferrer">查看这个 skill 的源码 ↗</a></div>
+    </section>
+    <section class="reference" aria-labelledby="reference-title"><div class="section-label">TAKE THE IDEA WITH YOU <span>↙</span></div><h2 id="reference-title">喜欢这个效果？<br>让它成为你的工具。</h2><div class="skill-grid"><article><div class="skill-top"><span>01 / INTERFACE</span><a href="https://github.com/Apson-Chian/my-skills/blob/main/glass-ui/SKILL.md" target="_blank" rel="noopener noreferrer">阅读 SKILL.md ↗</a></div><h3>glass-ui</h3><p>从卡片到浮动导航，统一透明度、背景模糊、高光与阴影。示例采用 CSS 背景模糊，底部展示分层渐进模糊近似。</p><div class="prompt"><code>使用 $glass-ui 改进当前界面的玻璃材质。</code><button data-copy="使用 $glass-ui 改进当前界面的玻璃材质。" aria-label="复制 glass-ui 示例提示词">复制</button></div></article><article><div class="skill-top"><span>02 / INTERACTION</span><a href="https://github.com/Apson-Chian/my-skills/blob/main/liquid-glass-controls/SKILL.md" target="_blank" rel="noopener noreferrer">阅读 SKILL.md ↗</a></div><h3>liquid-glass-controls</h3><p>让按钮、透镜和导航回应触碰。示例用同一背景画布提供折射输入，支持轻微色散、独立模糊、按压与拖动导航。</p><div class="prompt"><code>使用 $liquid-glass-controls 实现液态玻璃导航。</code><button data-copy="使用 $liquid-glass-controls 实现液态玻璃导航。" aria-label="复制 liquid-glass-controls 示例提示词">复制</button></div></article></div><p class="reference-note">将完整的 skill 目录安装到所用 AI Agent 支持的 skills 目录，并保留附属资源。示例为 Web 效果参考，接入实际项目后需要重新验证；不支持 WebGL 时控件实验室回退到磨砂效果。</p></section>
+  </main>
+  <footer class="footer wrap"><a href="https://github.com/Apson-Chian" target="_blank" rel="noopener noreferrer">Made by Apson-Chian ↗</a><span>OPEN SOURCE SKILLS. SMALL DETAILS. BETTER INTERFACES.</span><a href="https://unsplash.com/photos/QP6XWJ9q6GY" target="_blank" rel="noopener noreferrer">摄影 · Shifaaz Shamoon ↗</a></footer><div class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

@@ -129,6 +129,8 @@
   }
   function paintBackdrop() {
     const width=scene.clientWidth,height=scene.clientHeight,dpr=Math.min(devicePixelRatio||1,2);
+    // Hidden showcase panels have no drawable area; keep the previous source until visible.
+    if(width<=0||height<=0)return;
     sceneWidth=width;sceneHeight=height;
     backdrop.width=Math.round(width*dpr);backdrop.height=Math.round(height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);
     ctx.fillStyle='#2e788d';ctx.fillRect(0,0,width,height);

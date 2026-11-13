@@ -1,0 +1,4 @@
+interface:
+  display_name: "玻璃材质界面"
+  short_description: "实现通透玻璃、轻微彩色折光、可调模糊与按压反馈，并检查背景采样与回退"
+  default_prompt: "使用 $glass-ui 按已保存的通透材质基准改进当前界面，实现轻微彩色折光、独立模糊与按压反馈，并按平台验证采样与回退。"

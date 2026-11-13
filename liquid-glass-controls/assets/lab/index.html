@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="拖动一片液态玻璃，观察边缘折射如何改变光线。">
+  <meta name="theme-color" content="#0c0d11">
+  <title>折光实验室 · Liquid Glass Lab</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="vendor/container.js"></script>
+  <script defer src="vendor/button.js"></script>
+  <script defer src="press.js"></script>
+  <script defer src="samples.js"></script>
+  <script defer src="lab.js"></script>
+</head>
+<body>
+  <header class="masthead">
+    <div class="shell masthead-inner">
+      <div class="brand"><span class="brand-mark" aria-hidden="true"></span>折光实验室</div>
+      <nav class="masthead-links" aria-label="页面导航">
+        <a class="samples-link press-chip" data-press href="#glass-samples">组件示例 <span aria-hidden="true">↓</span></a>
+        <a class="source press-chip" data-press href="https://github.com/dashersw/liquid-glass-js" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell">
+    <div class="intro">
+      <p class="kicker"><i></i> OPTICS LAB / 01</p>
+      <h1>液态玻璃<span>.</span></h1>
+      <p class="lede">拖动透镜，观察色带如何在玻璃边缘弯折。</p>
+    </div>
+
+    <div class="workbench">
+      <section class="scene" aria-label="折射预览" data-palette="0">
+        <canvas id="scene-art" aria-hidden="true"></canvas>
+        <div class="scene-top">
+          <span><i></i> <span id="scene-label">01 / 极光</span></span>
+          <span id="render-mode" role="status">磨砂预览</span>
+        </div>
+        <div id="lens" role="group" tabindex="0" aria-label="玻璃透镜，使用方向键移动" aria-describedby="lens-hint">
+          <div class="lens-face" aria-hidden="true"></div>
+          <div class="reticle" aria-hidden="true">+</div>
+        </div>
+        <div class="scene-bottom">
+          <span id="lens-hint">拖动透镜 · 方向键也可移动</span>
+          <span aria-hidden="true">FIG. 01</span>
+        </div>
+      </section>
+
+      <aside class="controls" aria-labelledby="control-title">
+        <div class="controls-head">
+          <h2 id="control-title">材质参数</h2>
+          <button type="button" id="reset" class="subtle-button press-chip" data-press>重置</button>
+        </div>
+        <div class="control-group">
+          <div class="control-label"><label for="refraction">折射强度</label><output for="refraction" id="refraction-value">62%</output></div>
+          <div class="glass-range panel-range" data-press>
+            <span class="glass-range-track" aria-hidden="true"></span>
+            <span class="glass-thumb" aria-hidden="true"></span>
+            <input type="range" id="refraction" min="0" max="100" value="62">
+          </div>
+          <div class="control-label"><label for="blur">背景模糊</label><output for="blur" id="blur-value">18%</output></div>
+          <div class="glass-range panel-range" data-press>
+            <span class="glass-range-track" aria-hidden="true"></span>
+            <span class="glass-thumb" aria-hidden="true"></span>
+            <input type="range" id="blur" min="0" max="100" value="18">
+          </div>
+        </div>
+        <fieldset class="palette">
+          <legend>背景场景</legend>
+          <div class="swatches">
+            <label data-press><input type="radio" name="scene" value="0" checked><span class="swatch aurora"></span><span>极光</span></label>
+            <label data-press><input type="radio" name="scene" value="1"><span class="swatch ember"></span><span>余烬</span></label>
+            <label data-press><input type="radio" name="scene" value="2"><span class="swatch tide"></span><span>深海</span></label>
+          </div>
+        </fieldset>
+        <label class="comparison" data-press>
+          <span>显示玻璃</span>
+          <span class="glass-switch">
+            <input id="show-glass" type="checkbox" role="switch" checked>
+            <span class="glass-switch-track" aria-hidden="true"></span>
+            <span class="glass-thumb" aria-hidden="true"></span>
+          </span>
+        </label>
+      </aside>
+    </div>
+    <section id="glass-samples" class="samples" aria-labelledby="samples-title">
+      <div class="samples-heading">
+        <p class="kicker"><i></i> OPTICS LAB / 02</p>
+        <h2 id="samples-title">玻璃组件</h2>
+        <p class="lede">试试按钮、滑杆与开关，观察玻璃在不同控件上的表现。</p>
+      </div>
+      <div class="sample-stage">
+        <canvas id="sample-art" aria-hidden="true"></canvas>
+        <div class="sample-grid">
+          <section class="sample-card" aria-labelledby="buttons-title">
+            <p class="sample-index">01 / SHAPES</p>
+            <h3 id="buttons-title">独立按钮</h3>
+            <p>圆角矩形、圆形与胶囊</p>
+            <div id="shape-buttons" class="shape-buttons"></div>
+          </section>
+          <section class="sample-card" aria-labelledby="dock-title">
+            <p class="sample-index">02 / NESTED GLASS</p>
+            <h3 id="dock-title">嵌套工具栏</h3>
+            <p>按钮会再次折射工具栏的玻璃表面。</p>
+            <div id="sample-dock"></div>
+          </section>
+          <section id="glass-inputs" class="sample-card input-card" aria-labelledby="inputs-title">
+            <p class="sample-index">03 / INTERACTIVE CONTROLS</p>
+            <h3 id="inputs-title">玻璃控件</h3>
+            <p>按住滑块或按钮，观察玻璃形变。折射强度、背景模糊和玻璃开关应用于整个展区。</p>
+            <div class="input-grid">
+              <div class="input-item">
+                <div class="input-label">
+                  <label for="sample-range">背景模糊</label>
+                  <output id="sample-range-value" for="sample-range">18%</output>
+                </div>
+                <div class="slider-row">
+                  <div id="blur-minus"></div>
+                  <div class="glass-range" data-press>
+                    <span class="glass-range-track" aria-hidden="true"></span>
+                    <input id="sample-range" type="range" min="0" max="100" value="18">
+                  </div>
+                  <div id="blur-plus"></div>
+                </div>
+              </div>
+
+              <fieldset class="input-item input-scenes">
+                <legend>背景场景</legend>
+                <div class="segments">
+                  <label data-press><input type="radio" name="sample-scene" value="0" checked><span>极光</span></label>
+                  <label data-press><input type="radio" name="sample-scene" value="1"><span>余烬</span></label>
+                  <label data-press><input type="radio" name="sample-scene" value="2"><span>深海</span></label>
+                </div>
+              </fieldset>
+
+              <label class="input-item input-switch" for="sample-switch" data-press>
+                <span>显示玻璃</span>
+                <span class="glass-switch">
+                  <input id="sample-switch" type="checkbox" role="switch" checked>
+                  <span class="glass-switch-track" aria-hidden="true"></span>
+                </span>
+              </label>
+            </div>
+          </section>
+        </div>
+        <div class="sample-caption">
+          <span id="sample-status" role="status">点击按钮试试</span>
+          <span id="sample-material">折射 62% · 模糊 18%</span>
+          <span id="sample-mode">磨砂预览</span>
+        </div>
+      </div>
+    </section>
+    <footer><span>LIQUID GLASS LAB</span><span>POWERED BY LIQUID-GLASS-JS</span></footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,4 @@
+interface:
+  display_name: "液态玻璃控件"
+  short_description: "实现通透玻璃、轻微彩色折光、可调模糊和按住拖动导航，并同步压感反馈"
+  default_prompt: "用 $liquid-glass-controls 按已保存的 72% 折射、8% 模糊、80% 压感基准实现当前网页的液态玻璃与拖动导航。"

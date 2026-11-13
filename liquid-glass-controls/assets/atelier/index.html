@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f8fa">
+  <meta name="description" content="让光有了触感。探索通透、折射与柔软压感的液态玻璃。">
+  <title>Liquid Glass · 让光有了触感</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+<svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 3 2.2 6.8L21 12l-6.8 2.2L12 21l-2.2-6.8L3 12l6.8-2.2Z"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M6 18 18 6M6 6h12v12"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 4.9a5.5 5.5 0 0 0-7.8 0L12 6l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.3a5.5 5.5 0 0 0 0-7.8Z"/></symbol>
+  <symbol id="i-wave" viewBox="0 0 24 24"><path d="M2 8c4-5 6 5 10 0s6 5 10 0M2 15c4-5 6 5 10 0s6 5 10 0"/></symbol>
+  <symbol id="i-orbit" viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="5" ry="10" transform="rotate(40 12 12)"/><ellipse cx="12" cy="12" rx="5" ry="10" transform="rotate(-40 12 12)"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></symbol>
+  <symbol id="i-reset" viewBox="0 0 24 24"><path d="M3 10a9 9 0 1 1 2.5 8M3 4v6h6"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.4 1.4m11.2 11.2L19 19M5 19l1.4-1.4M17.6 6.4 19 5"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.8 13A9 9 0 0 1 11 3.2 9 9 0 1 0 20.8 13Z"/></symbol>
+  <symbol id="i-touch" viewBox="0 0 32 32"><path d="M9 16v-3a7 7 0 0 1 14 0v7m-10-2v-5a3 3 0 0 1 6 0v8m-3-7v8c0 4-2 6-3 7m-7-9v-6a10 10 0 0 1 20 0v5m-17 1c0 4-1 6-2 8m16-5c0 2-.5 4-1 5m-7-3c-.5 2-1 3-2 4"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+</defs></svg>
+<header class="site-header">
+  <a class="brand" href="#" aria-label="Liquid Glass 首页"><span class="brand-mark"><span></span><span></span></span>Liquid Glass<span class="brand-tag">LAB</span></a>
+  <nav aria-label="页面导航"><a href="#playground" class="nav-active">材质体验</a><a href="#details">设计细节 <span>↗</span></a></nav>
+  <button id="theme" class="theme-button" aria-label="切换深色外观"><svg><use href="#i-sun"/></svg></button>
+</header>
+<main>
+  <section class="intro" aria-labelledby="page-title">
+    <div><div class="eyebrow"><span></span> A LITTLE LIGHT. A LITTLE MAGIC.</div><h1 id="page-title">让光，有了触感<span>。</span></h1><p>像玻璃一样通透，像水一样回应。</p></div>
+    <div class="intro-aside"><span class="live-dot"></span> 不止于看，更在于触碰<span class="aside-small">按住 · 拖动 · 发现</span></div>
+  </section>
+  <section id="playground" class="workspace" aria-label="液态玻璃交互体验">
+    <div class="preview-column">
+      <div class="scene" id="scene">
+        <canvas id="backdrop" aria-label="海岸摄影与排版背景"></canvas>
+        <canvas id="refraction-canvas" aria-hidden="true"></canvas>
+        <div class="scene-meta"><span class="scene-marker"></span><span id="scene-location">COASTLINE, A MOMENT OF CALM</span></div>
+        <button class="glass-surface favorite" id="favorite" aria-label="收藏这个场景" aria-pressed="false" data-shape="circle"><span class="glass-face"></span><svg><use href="#i-heart"/></svg></button>
+        <button class="glass-surface experience" id="experience"><span class="glass-face"></span><span>换一个视角</span><svg><use href="#i-arrow"/></svg></button>
+        <div class="glass-surface lens" id="lens" role="button" tabindex="0" aria-label="玻璃透镜，按住拖动，或使用方向键移动" data-shape="lens"><span class="glass-face"></span><div class="lens-content"><svg><use href="#i-touch"/></svg><span>按住，感受流动</span></div><span class="lens-glint"></span></div>
+        <div class="scene-footer"><span class="scene-count" id="scene-count">01 <i>/ 03</i></span><div class="glass-surface scene-dock" role="group" aria-label="选择背景，按住左右拖动切换"><span class="glass-face"></span><span class="glass-surface scene-selection" aria-hidden="true"><span class="glass-face"></span></span><button class="scene-option active" data-scene="coast" aria-pressed="true"><svg><use href="#i-wave"/></svg><span>海岸</span></button><button class="scene-option" data-scene="spectrum" aria-pressed="false"><svg><use href="#i-orbit"/></svg><span>光谱</span></button><button class="scene-option" data-scene="grid" aria-pressed="false"><svg><use href="#i-grid"/></svg><span>网格</span></button></div><button class="scene-next" id="scene-next" aria-label="切换下一个背景">↗</button></div>
+      </div>
+      <div class="preview-caption"><span><span class="caption-dot"></span><span id="render-status">正在准备光线</span></span><span>按住底部导航，左右拖动切换 <svg><use href="#i-arrow"/></svg></span></div>
+    </div>
+    <aside class="inspector" aria-labelledby="material-title">
+      <div class="inspector-top"><div><span class="panel-eyebrow">MAKE IT YOURS</span><h2 id="material-title">你的玻璃，你来调。</h2></div><button id="reset" class="reset" aria-label="恢复默认材质" title="恢复默认材质"><svg><use href="#i-reset"/></svg></button></div>
+      <div class="material-tabs" role="group" aria-label="玻璃材质"><button class="selected" data-material="clear" aria-pressed="true">通透</button><button data-material="frosted" aria-pressed="false">柔雾</button><span class="material-indicator"></span></div>
+      <p class="material-description" id="material-description">让背景自然透过，留下恰到好处的光。</p>
+      <div class="control"><div class="control-label"><label for="refraction">折射强度</label><output for="refraction" id="refraction-value">72<span>%</span></output></div><div class="range-shell" data-control="refraction"><canvas class="range-glass" aria-hidden="true"></canvas><input id="refraction" type="range" min="0" max="100" value="72"></div><div class="range-labels"><span>轻柔</span><span>鲜明</span></div></div>
+      <div class="control"><div class="control-label"><label for="blur">背景模糊</label><output for="blur" id="blur-value">8<span>%</span></output></div><div class="range-shell" data-control="blur"><canvas class="range-glass" aria-hidden="true"></canvas><input id="blur" type="range" min="0" max="100" value="8"></div><div class="range-labels"><span>清晰</span><span>朦胧</span></div></div>
+      <div class="control pressure-control"><div class="control-label"><label for="pressure">按压反馈</label><output for="pressure" id="pressure-value">80<span>%</span></output></div><div class="range-shell" data-control="pressure"><canvas class="range-glass" aria-hidden="true"></canvas><input id="pressure" type="range" min="0" max="100" value="80"></div><div class="range-labels"><span>克制</span><span>柔软</span></div></div>
+      <div class="effect-row"><div><label for="effects">液态玻璃</label><p>给光线一点自由</p></div><label class="switch"><input id="effects" type="checkbox" role="switch" checked><span class="switch-track"></span><span class="switch-thumb"></span></label></div>
+      <div class="touch-tip"><svg><use href="#i-touch"/></svg><p>试试长按玻璃透镜<br><span>指尖之下，光也会变得柔软。</span></p></div>
+    </aside>
+  </section>
+  <section class="details" id="details" aria-label="材质设计细节">
+    <article><span class="detail-number">01 /</span><div><h3>少一点遮挡，多一点世界。</h3><p>轻盈的表面，让色彩与细节自然穿过。</p></div><span class="detail-art art-transparency"><i></i><i></i></span></article>
+    <article><span class="detail-number">02 /</span><div><h3>光线在边缘，悄悄转弯。</h3><p>流动的折射，让平面也有了真实的厚度。</p></div><span class="detail-art art-refraction"><i></i><i></i></span></article>
+    <article><span class="detail-number">03 /</span><div><h3>每一次触碰，都有回应。</h3><p>按下时柔软形变，松手时轻轻回弹。</p></div><span class="detail-art art-pressure"><i></i><i></i></span></article>
+  </section>
+</main>
+<footer><span class="footer-brand">Liquid Glass <span>·</span> 为指尖而设计</span><span>INSPIRED BY LIGHT, BUILT FOR TOUCH.</span><a href="https://unsplash.com/photos/QP6XWJ9q6GY" target="_blank" rel="noreferrer">摄影 / Shifaaz Shamoon ↗</a></footer>
+<div class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

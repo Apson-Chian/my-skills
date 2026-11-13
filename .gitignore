@@ -1,0 +1,13 @@
+.DS_Store
+node_modules/
+.env
+.env.*
+!.env.example
+*.log
+__pycache__/
+*.py[cod]
+
+# Local backups and standalone demo projects
+/skill-backups/
+/glass-demo/
+/liquid-glass/
